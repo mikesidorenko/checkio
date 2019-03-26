@@ -1,11 +1,8 @@
-def long_repeat(line):
-	if line == '':
-		return 0
+def sun_angle(time):
+	dpm = 180 / (12 * 60) #degrees per minute
+	a = time.split(':')
+	minutes = int(a[0]) * 60 + int(a[1])
+	if minutes < 360 or minutes > 1080:
+		return "I don't see the sun!"
 	else:
-		import re
-		fuck = re.compile(r'(.)\1+')
-		refuck = [match.group() for match in fuck.finditer(line)]
-		if refuck == []:
-			return 1
-		else:
-			return max(len(x) for x in refuck)
+		return round((minutes - 360) * dpm, 2)
